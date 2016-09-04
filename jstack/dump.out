@@ -1,0 +1,840 @@
+=======================Druid-ConnectionPool-Create-942986815唤醒,dump start 2016-08-15 23:26:59 =======================
+2016-08-15 23:27:00
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.40-b25 mixed mode):
+
+"Attach Listener" #13 daemon prio=9 os_prio=31 tid=0x00007fb52a168800 nid=0x5503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"process reaper" #12 daemon prio=10 os_prio=31 tid=0x00007fb52a88e000 nid=0x5303 runnable [0x000070000137a000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.UNIXProcess.waitForProcessExit(Native Method)
+	at java.lang.UNIXProcess.lambda$initStreams$266(UNIXProcess.java:290)
+	at java.lang.UNIXProcess$$Lambda$7/1231845804.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Druid-ConnectionPool-Destroy-942986815" #11 daemon prio=5 os_prio=31 tid=0x00007fb529ab4000 nid=0x5103 waiting on condition [0x000070000134f000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.lfx.druid.model.DruidDataSource$DestroyConnectionThread.run(DruidDataSource.java:342)
+
+"Druid-ConnectionPool-Create-942986815" #10 daemon prio=5 os_prio=31 tid=0x00007fb529a89800 nid=0x4f03 runnable [0x000070000124c000]
+   java.lang.Thread.State: RUNNABLE
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	- locked <0x0000000796740780> (a java.lang.UNIXProcess$ProcessPipeInputStream)
+	at com.lfx.util.BashUtils.executeJstack(BashUtils.java:48)
+	at com.lfx.druid.model.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:219)
+
+"Monitor Ctrl-Break" #9 daemon prio=5 os_prio=31 tid=0x00007fb5298dc000 nid=0x4d03 runnable [0x0000700001149000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:404)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	at java.net.ServerSocket.accept(ServerSocket.java:513)
+	at com.intellij.rt.execution.application.AppMain$1.run(AppMain.java:90)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007fb52b074000 nid=0x4903 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007fb529851800 nid=0x4703 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007fb52a81c800 nid=0x4503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007fb529850800 nid=0x4303 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007fb52b028800 nid=0x360f runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007fb52983a800 nid=0x2e03 in Object.wait() [0x000070000092e000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+	- locked <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:164)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007fb52b006000 nid=0x2c03 in Object.wait() [0x000070000082b000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007fb52a802000 nid=0x1003 waiting on condition [0x0000700000182000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000079653ab58> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+	at com.lfx.druid.model.DruidDataSource.takeLast(DruidDataSource.java:617)
+	at com.lfx.druid.model.DruidDataSource.getConnectionInternal(DruidDataSource.java:516)
+	at com.lfx.druid.model.DruidDataSource.getConnectionDirect(DruidDataSource.java:457)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:448)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:442)
+	at com.lfx.druid.model.DruidDataSourceTest.main(DruidDataSourceTest.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+
+"VM Thread" os_prio=31 tid=0x00007fb52a01f800 nid=0x2a03 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007fb529815800 nid=0x2203 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007fb52b002000 nid=0x2403 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007fb52b003000 nid=0x2603 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007fb52b003800 nid=0x2803 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007fb52a81d800 nid=0x4b03 waiting on condition 
+
+JNI global references: 371
+
+=======================  Druid-ConnectionPool-Create-942986815唤醒,dump end  2016-08-15 23:26:59  =======================
+=======================main唤醒,dump start 2016-08-15 23:27:00 =======================
+2016-08-15 23:27:01
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.40-b25 mixed mode):
+
+"Attach Listener" #13 daemon prio=9 os_prio=31 tid=0x00007fb52a168800 nid=0x5503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"process reaper" #12 daemon prio=10 os_prio=31 tid=0x00007fb52a88e000 nid=0x5303 runnable [0x000070000137a000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.UNIXProcess.waitForProcessExit(Native Method)
+	at java.lang.UNIXProcess.lambda$initStreams$266(UNIXProcess.java:290)
+	at java.lang.UNIXProcess$$Lambda$7/1231845804.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Druid-ConnectionPool-Destroy-942986815" #11 daemon prio=5 os_prio=31 tid=0x00007fb529ab4000 nid=0x5103 waiting on condition [0x000070000134f000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.lfx.druid.model.DruidDataSource$DestroyConnectionThread.run(DruidDataSource.java:342)
+
+"Druid-ConnectionPool-Create-942986815" #10 daemon prio=5 os_prio=31 tid=0x00007fb529a89800 nid=0x4f03 waiting on condition [0x000070000124c000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000079653ab70> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+	at com.lfx.druid.model.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:218)
+
+"Monitor Ctrl-Break" #9 daemon prio=5 os_prio=31 tid=0x00007fb5298dc000 nid=0x4d03 runnable [0x0000700001149000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:404)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	at java.net.ServerSocket.accept(ServerSocket.java:513)
+	at com.intellij.rt.execution.application.AppMain$1.run(AppMain.java:90)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007fb52b074000 nid=0x4903 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007fb529851800 nid=0x4703 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007fb52a81c800 nid=0x4503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007fb529850800 nid=0x4303 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007fb52b028800 nid=0x360f runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007fb52983a800 nid=0x2e03 in Object.wait() [0x000070000092e000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+	- locked <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:164)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007fb52b006000 nid=0x2c03 in Object.wait() [0x000070000082b000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007fb52a802000 nid=0x1003 runnable [0x0000700000182000]
+   java.lang.Thread.State: RUNNABLE
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	- locked <0x00000007965bc2a8> (a java.lang.UNIXProcess$ProcessPipeInputStream)
+	at com.lfx.util.BashUtils.executeJstack(BashUtils.java:48)
+	at com.lfx.druid.model.DruidDataSource.takeLast(DruidDataSource.java:618)
+	at com.lfx.druid.model.DruidDataSource.getConnectionInternal(DruidDataSource.java:516)
+	at com.lfx.druid.model.DruidDataSource.getConnectionDirect(DruidDataSource.java:457)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:448)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:442)
+	at com.lfx.druid.model.DruidDataSourceTest.main(DruidDataSourceTest.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+
+"VM Thread" os_prio=31 tid=0x00007fb52a01f800 nid=0x2a03 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007fb529815800 nid=0x2203 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007fb52b002000 nid=0x2403 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007fb52b003000 nid=0x2603 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007fb52b003800 nid=0x2803 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007fb52a81d800 nid=0x4b03 waiting on condition 
+
+JNI global references: 400
+
+=======================  main唤醒,dump end  2016-08-15 23:27:00  =======================
+=======================Druid-ConnectionPool-Create-942986815唤醒,dump start 2016-08-16 00:31:21 =======================
+2016-08-16 00:31:22
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.40-b25 mixed mode):
+
+"Attach Listener" #13 daemon prio=9 os_prio=31 tid=0x00007ff1d398d000 nid=0x5503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"process reaper" #12 daemon prio=10 os_prio=31 tid=0x00007ff1d398f800 nid=0x5303 runnable [0x000070000137a000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.UNIXProcess.waitForProcessExit(Native Method)
+	at java.lang.UNIXProcess.lambda$initStreams$266(UNIXProcess.java:290)
+	at java.lang.UNIXProcess$$Lambda$7/564532484.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Druid-ConnectionPool-Destroy-942986815" #11 daemon prio=5 os_prio=31 tid=0x00007ff1d30c9000 nid=0x5103 waiting on condition [0x000070000134f000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.lfx.druid.model.DruidDataSource$DestroyConnectionThread.run(DruidDataSource.java:342)
+
+"Druid-ConnectionPool-Create-942986815" #10 daemon prio=5 os_prio=31 tid=0x00007ff1d2979800 nid=0x4f03 runnable [0x000070000124c000]
+   java.lang.Thread.State: RUNNABLE
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	- locked <0x0000000796698028> (a java.lang.UNIXProcess$ProcessPipeInputStream)
+	at com.lfx.util.BashUtils.executeJstack(BashUtils.java:48)
+	at com.lfx.druid.model.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:219)
+
+"Monitor Ctrl-Break" #9 daemon prio=5 os_prio=31 tid=0x00007ff1d28aa800 nid=0x4d03 runnable [0x0000700001149000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:404)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	at java.net.ServerSocket.accept(ServerSocket.java:513)
+	at com.intellij.rt.execution.application.AppMain$1.run(AppMain.java:90)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007ff1d2073000 nid=0x4903 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007ff1d3837000 nid=0x4703 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007ff1d3836000 nid=0x4503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007ff1d2039000 nid=0x4303 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007ff1d2040000 nid=0x410b runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007ff1d2011800 nid=0x3003 in Object.wait() [0x000070000092e000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+	- locked <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:164)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007ff1d3013000 nid=0x2e03 in Object.wait() [0x000070000082b000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007ff1d3800000 nid=0x1003 waiting on condition [0x0000700000182000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007964966a0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+	at com.lfx.druid.model.DruidDataSource.takeLast(DruidDataSource.java:619)
+	at com.lfx.druid.model.DruidDataSource.getConnectionInternal(DruidDataSource.java:518)
+	at com.lfx.druid.model.DruidDataSource.getConnectionDirect(DruidDataSource.java:459)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:450)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:444)
+	at com.lfx.druid.model.DruidDataSourceTest.main(DruidDataSourceTest.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+
+"VM Thread" os_prio=31 tid=0x00007ff1d3012800 nid=0x2c03 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007ff1d2017800 nid=0x2403 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007ff1d2018000 nid=0x2603 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007ff1d2018800 nid=0x2803 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007ff1d2019800 nid=0x2a03 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007ff1d2073800 nid=0x4b03 waiting on condition 
+
+JNI global references: 370
+
+=======================  Druid-ConnectionPool-Create-942986815唤醒,dump end  2016-08-16 00:31:21  =======================
+=======================main唤醒,dump start 2016-08-16 00:31:22 =======================
+2016-08-16 00:31:22
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.40-b25 mixed mode):
+
+"Attach Listener" #13 daemon prio=9 os_prio=31 tid=0x00007ff1d398d000 nid=0x5503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"process reaper" #12 daemon prio=10 os_prio=31 tid=0x00007ff1d398f800 nid=0x5303 runnable [0x000070000137a000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.UNIXProcess.waitForProcessExit(Native Method)
+	at java.lang.UNIXProcess.lambda$initStreams$266(UNIXProcess.java:290)
+	at java.lang.UNIXProcess$$Lambda$7/564532484.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Druid-ConnectionPool-Destroy-942986815" #11 daemon prio=5 os_prio=31 tid=0x00007ff1d30c9000 nid=0x5103 waiting on condition [0x000070000134f000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.lfx.druid.model.DruidDataSource$DestroyConnectionThread.run(DruidDataSource.java:342)
+
+"Druid-ConnectionPool-Create-942986815" #10 daemon prio=5 os_prio=31 tid=0x00007ff1d2979800 nid=0x4f03 waiting on condition [0x000070000124c000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007964966b8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+	at com.lfx.druid.model.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:218)
+
+"Monitor Ctrl-Break" #9 daemon prio=5 os_prio=31 tid=0x00007ff1d28aa800 nid=0x4d03 runnable [0x0000700001149000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:404)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	at java.net.ServerSocket.accept(ServerSocket.java:513)
+	at com.intellij.rt.execution.application.AppMain$1.run(AppMain.java:90)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007ff1d2073000 nid=0x4903 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007ff1d3837000 nid=0x4703 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007ff1d3836000 nid=0x4503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007ff1d2039000 nid=0x4303 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007ff1d2040000 nid=0x410b runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007ff1d2011800 nid=0x3003 in Object.wait() [0x000070000092e000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+	- locked <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:164)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007ff1d3013000 nid=0x2e03 in Object.wait() [0x000070000082b000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007ff1d3800000 nid=0x1003 runnable [0x0000700000182000]
+   java.lang.Thread.State: RUNNABLE
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	- locked <0x0000000796518390> (a java.lang.UNIXProcess$ProcessPipeInputStream)
+	at com.lfx.util.BashUtils.executeJstack(BashUtils.java:48)
+	at com.lfx.druid.model.DruidDataSource.takeLast(DruidDataSource.java:620)
+	at com.lfx.druid.model.DruidDataSource.getConnectionInternal(DruidDataSource.java:518)
+	at com.lfx.druid.model.DruidDataSource.getConnectionDirect(DruidDataSource.java:459)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:450)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:444)
+	at com.lfx.druid.model.DruidDataSourceTest.main(DruidDataSourceTest.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+
+"VM Thread" os_prio=31 tid=0x00007ff1d3012800 nid=0x2c03 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007ff1d2017800 nid=0x2403 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007ff1d2018000 nid=0x2603 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007ff1d2018800 nid=0x2803 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007ff1d2019800 nid=0x2a03 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007ff1d2073800 nid=0x4b03 waiting on condition 
+
+JNI global references: 402
+
+=======================  main唤醒,dump end  2016-08-16 00:31:22  =======================
+=======================Druid-ConnectionPool-Create-942986815唤醒,dump start 2016-08-16 00:37:27 =======================
+2016-08-16 00:37:27
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.40-b25 mixed mode):
+
+"Attach Listener" #13 daemon prio=9 os_prio=31 tid=0x00007f99939d0800 nid=0x5503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"process reaper" #12 daemon prio=10 os_prio=31 tid=0x00007f999289e000 nid=0x5303 runnable [0x000070000137a000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.UNIXProcess.waitForProcessExit(Native Method)
+	at java.lang.UNIXProcess.lambda$initStreams$266(UNIXProcess.java:290)
+	at java.lang.UNIXProcess$$Lambda$7/564532484.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Druid-ConnectionPool-Destroy-942986815" #11 daemon prio=5 os_prio=31 tid=0x00007f99930fa000 nid=0x5103 waiting on condition [0x000070000134f000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.lfx.druid.model.DruidDataSource$DestroyConnectionThread.run(DruidDataSource.java:342)
+
+"Druid-ConnectionPool-Create-942986815" #10 daemon prio=5 os_prio=31 tid=0x00007f99930f3000 nid=0x4f03 runnable [0x000070000124c000]
+   java.lang.Thread.State: RUNNABLE
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	- locked <0x0000000796697c40> (a java.lang.UNIXProcess$ProcessPipeInputStream)
+	at com.lfx.util.BashUtils.executeJstack(BashUtils.java:48)
+	at com.lfx.druid.model.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:219)
+
+"Monitor Ctrl-Break" #9 daemon prio=5 os_prio=31 tid=0x00007f999283b000 nid=0x4d03 runnable [0x0000700001149000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:404)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	at java.net.ServerSocket.accept(ServerSocket.java:513)
+	at com.intellij.rt.execution.application.AppMain$1.run(AppMain.java:90)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007f9992829800 nid=0x4903 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007f9992829000 nid=0x4703 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007f999281a000 nid=0x4503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007f999384f000 nid=0x4303 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007f9993024000 nid=0x320f runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007f999383d800 nid=0x2e03 in Object.wait() [0x000070000092e000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+	- locked <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:164)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007f9992013000 nid=0x2c03 in Object.wait() [0x000070000082b000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007f9992806800 nid=0x1003 waiting on condition [0x0000700000182000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007964962b8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+	at com.lfx.druid.model.DruidDataSource.takeLast(DruidDataSource.java:619)
+	at com.lfx.druid.model.DruidDataSource.getConnectionInternal(DruidDataSource.java:517)
+	at com.lfx.druid.model.DruidDataSource.getConnectionDirect(DruidDataSource.java:458)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:449)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:443)
+	at com.lfx.druid.model.DruidDataSourceTest.main(DruidDataSourceTest.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+
+"VM Thread" os_prio=31 tid=0x00007f9992010800 nid=0x2a03 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007f9992005000 nid=0x2203 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007f9992005800 nid=0x2403 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007f9992006000 nid=0x2603 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007f9992007000 nid=0x2803 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007f9993844800 nid=0x4b03 waiting on condition 
+
+JNI global references: 370
+
+=======================  Druid-ConnectionPool-Create-942986815唤醒,dump end  2016-08-16 00:37:27  =======================
+=======================main唤醒,dump start 2016-08-16 00:37:28 =======================
+2016-08-16 00:37:28
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.40-b25 mixed mode):
+
+"Attach Listener" #13 daemon prio=9 os_prio=31 tid=0x00007f99939d0800 nid=0x5503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"process reaper" #12 daemon prio=10 os_prio=31 tid=0x00007f999289e000 nid=0x5303 runnable [0x000070000137a000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.UNIXProcess.waitForProcessExit(Native Method)
+	at java.lang.UNIXProcess.lambda$initStreams$266(UNIXProcess.java:290)
+	at java.lang.UNIXProcess$$Lambda$7/564532484.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Druid-ConnectionPool-Destroy-942986815" #11 daemon prio=5 os_prio=31 tid=0x00007f99930fa000 nid=0x5103 waiting on condition [0x000070000134f000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.lfx.druid.model.DruidDataSource$DestroyConnectionThread.run(DruidDataSource.java:342)
+
+"Druid-ConnectionPool-Create-942986815" #10 daemon prio=5 os_prio=31 tid=0x00007f99930f3000 nid=0x4f03 waiting on condition [0x000070000124c000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007964962d0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+	at com.lfx.druid.model.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:218)
+
+"Monitor Ctrl-Break" #9 daemon prio=5 os_prio=31 tid=0x00007f999283b000 nid=0x4d03 runnable [0x0000700001149000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:404)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	at java.net.ServerSocket.accept(ServerSocket.java:513)
+	at com.intellij.rt.execution.application.AppMain$1.run(AppMain.java:90)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007f9992829800 nid=0x4903 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007f9992829000 nid=0x4703 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007f999281a000 nid=0x4503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007f999384f000 nid=0x4303 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007f9993024000 nid=0x320f runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007f999383d800 nid=0x2e03 in Object.wait() [0x000070000092e000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+	- locked <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:164)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007f9992013000 nid=0x2c03 in Object.wait() [0x000070000082b000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007f9992806800 nid=0x1003 runnable [0x0000700000182000]
+   java.lang.Thread.State: RUNNABLE
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	- locked <0x0000000796518048> (a java.lang.UNIXProcess$ProcessPipeInputStream)
+	at com.lfx.util.BashUtils.executeJstack(BashUtils.java:48)
+	at com.lfx.druid.model.DruidDataSource.takeLast(DruidDataSource.java:620)
+	at com.lfx.druid.model.DruidDataSource.getConnectionInternal(DruidDataSource.java:517)
+	at com.lfx.druid.model.DruidDataSource.getConnectionDirect(DruidDataSource.java:458)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:449)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:443)
+	at com.lfx.druid.model.DruidDataSourceTest.main(DruidDataSourceTest.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+
+"VM Thread" os_prio=31 tid=0x00007f9992010800 nid=0x2a03 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007f9992005000 nid=0x2203 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007f9992005800 nid=0x2403 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007f9992006000 nid=0x2603 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007f9992007000 nid=0x2803 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007f9993844800 nid=0x4b03 waiting on condition 
+
+JNI global references: 399
+
+=======================  main唤醒,dump end  2016-08-16 00:37:28  =======================
+=======================Druid-ConnectionPool-Create-942986815唤醒,dump start 2016-08-16 00:39:22 =======================
+2016-08-16 00:39:22
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.40-b25 mixed mode):
+
+"Attach Listener" #13 daemon prio=9 os_prio=31 tid=0x00007fcb3b8ee800 nid=0x5603 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"process reaper" #12 daemon prio=10 os_prio=31 tid=0x00007fcb3c29d800 nid=0x5403 runnable [0x00007000013fd000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.UNIXProcess.waitForProcessExit(Native Method)
+	at java.lang.UNIXProcess.lambda$initStreams$266(UNIXProcess.java:290)
+	at java.lang.UNIXProcess$$Lambda$7/1905560830.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Druid-ConnectionPool-Destroy-942986815" #11 daemon prio=5 os_prio=31 tid=0x00007fcb3d0d9800 nid=0x5203 waiting on condition [0x00007000013d2000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.lfx.druid.model.DruidDataSource$DestroyConnectionThread.run(DruidDataSource.java:342)
+
+"Druid-ConnectionPool-Create-942986815" #10 daemon prio=5 os_prio=31 tid=0x00007fcb3c274800 nid=0x5003 runnable [0x00007000012cf000]
+   java.lang.Thread.State: RUNNABLE
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	- locked <0x000000079673eaa8> (a java.lang.UNIXProcess$ProcessPipeInputStream)
+	at com.lfx.util.BashUtils.executeJstack(BashUtils.java:48)
+	at com.lfx.druid.model.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:220)
+
+"Monitor Ctrl-Break" #9 daemon prio=5 os_prio=31 tid=0x00007fcb3c84f800 nid=0x4e03 runnable [0x00007000011cc000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:404)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	at java.net.ServerSocket.accept(ServerSocket.java:513)
+	at com.intellij.rt.execution.application.AppMain$1.run(AppMain.java:90)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007fcb3c81e800 nid=0x4a03 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007fcb3c096800 nid=0x4803 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007fcb3c039800 nid=0x4603 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007fcb3d016800 nid=0x4403 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007fcb3d009800 nid=0x4117 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007fcb3b823000 nid=0x2e03 in Object.wait() [0x000070000092e000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+	- locked <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:164)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007fcb3c800000 nid=0x2c03 in Object.wait() [0x000070000082b000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007fcb3c801800 nid=0x1003 waiting on condition [0x0000700000182000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000079653bc18> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+	at com.lfx.druid.model.DruidDataSource.takeLast(DruidDataSource.java:619)
+	at com.lfx.druid.model.DruidDataSource.getConnectionInternal(DruidDataSource.java:517)
+	at com.lfx.druid.model.DruidDataSource.getConnectionDirect(DruidDataSource.java:458)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:449)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:443)
+	at com.lfx.druid.model.DruidDataSourceTest.main(DruidDataSourceTest.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+
+"VM Thread" os_prio=31 tid=0x00007fcb3c03c800 nid=0x2a03 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007fcb3c004800 nid=0x2203 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007fcb3c00c000 nid=0x2403 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007fcb3c00c800 nid=0x2603 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007fcb3c00d800 nid=0x2803 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007fcb3d017000 nid=0x4c03 waiting on condition 
+
+JNI global references: 371
+
+=======================  Druid-ConnectionPool-Create-942986815唤醒,dump end  2016-08-16 00:39:22  =======================
+=======================main唤醒,dump start 2016-08-16 00:39:23 =======================
+2016-08-16 00:39:23
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.40-b25 mixed mode):
+
+"Attach Listener" #13 daemon prio=9 os_prio=31 tid=0x00007fcb3b8ee800 nid=0x5603 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"process reaper" #12 daemon prio=10 os_prio=31 tid=0x00007fcb3c29d800 nid=0x5403 runnable [0x00007000013fd000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.UNIXProcess.waitForProcessExit(Native Method)
+	at java.lang.UNIXProcess.lambda$initStreams$266(UNIXProcess.java:290)
+	at java.lang.UNIXProcess$$Lambda$7/1905560830.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Druid-ConnectionPool-Destroy-942986815" #11 daemon prio=5 os_prio=31 tid=0x00007fcb3d0d9800 nid=0x5203 waiting on condition [0x00007000013d2000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.lfx.druid.model.DruidDataSource$DestroyConnectionThread.run(DruidDataSource.java:342)
+
+"Druid-ConnectionPool-Create-942986815" #10 daemon prio=5 os_prio=31 tid=0x00007fcb3c274800 nid=0x5003 waiting on condition [0x00007000012cf000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000079653bc30> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+	at com.lfx.druid.model.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:219)
+
+"Monitor Ctrl-Break" #9 daemon prio=5 os_prio=31 tid=0x00007fcb3c84f800 nid=0x4e03 runnable [0x00007000011cc000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:404)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	at java.net.ServerSocket.accept(ServerSocket.java:513)
+	at com.intellij.rt.execution.application.AppMain$1.run(AppMain.java:90)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007fcb3c81e800 nid=0x4a03 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007fcb3c096800 nid=0x4803 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007fcb3c039800 nid=0x4603 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007fcb3d016800 nid=0x4403 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007fcb3d009800 nid=0x4117 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007fcb3b823000 nid=0x2e03 in Object.wait() [0x000070000092e000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+	- locked <0x0000000795586f58> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:164)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007fcb3c800000 nid=0x2c03 in Object.wait() [0x000070000082b000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x0000000795586998> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007fcb3c801800 nid=0x1003 runnable [0x0000700000182000]
+   java.lang.Thread.State: RUNNABLE
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	- locked <0x00000007965bd8e8> (a java.lang.UNIXProcess$ProcessPipeInputStream)
+	at com.lfx.util.BashUtils.executeJstack(BashUtils.java:48)
+	at com.lfx.druid.model.DruidDataSource.takeLast(DruidDataSource.java:620)
+	at com.lfx.druid.model.DruidDataSource.getConnectionInternal(DruidDataSource.java:517)
+	at com.lfx.druid.model.DruidDataSource.getConnectionDirect(DruidDataSource.java:458)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:449)
+	at com.lfx.druid.model.DruidDataSource.getConnection(DruidDataSource.java:443)
+	at com.lfx.druid.model.DruidDataSourceTest.main(DruidDataSourceTest.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+
+"VM Thread" os_prio=31 tid=0x00007fcb3c03c800 nid=0x2a03 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007fcb3c004800 nid=0x2203 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007fcb3c00c000 nid=0x2403 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007fcb3c00c800 nid=0x2603 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007fcb3c00d800 nid=0x2803 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007fcb3d017000 nid=0x4c03 waiting on condition 
+
+JNI global references: 402
+
+=======================  main唤醒,dump end  2016-08-16 00:39:23  =======================

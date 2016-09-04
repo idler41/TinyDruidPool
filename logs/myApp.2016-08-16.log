@@ -1,0 +1,6 @@
+2016-08-16 00:31:21.291 [main] INFO  com.lfx.druid.model.DruidDataSource - dataSource inited
+2016-08-16 00:31:22.806 [main] INFO  com.lfx.druid.model.DruidDataSource - dataSource closed
+2016-08-16 00:37:26.980 [main] INFO  com.lfx.druid.model.DruidDataSource - dataSource inited
+2016-08-16 00:37:28.398 [main] INFO  com.lfx.druid.model.DruidDataSource - dataSource closed
+2016-08-16 00:39:22.214 [main] INFO  com.lfx.druid.model.DruidDataSource - dataSource inited
+2016-08-16 00:39:23.688 [main] INFO  com.lfx.druid.model.DruidDataSource - dataSource closed
