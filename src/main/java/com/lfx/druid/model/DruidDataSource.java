@@ -73,10 +73,10 @@ public class DruidDataSource extends DruidAbstractDataSource {
             return;
         }
 
-        //不懂为什么要声明一个多余的局部变量？
+        //TODO 为什么要有一个多余的操作，声明一个的局部变量？
         final ReentrantLock lock = this.lock;
 
-        //猜测优先考虑中断是确保初始化的取消
+        //有其它线程在初始化，则本次操作可中断
         try {
             lock.lockInterruptibly();
         } catch (InterruptedException e) {

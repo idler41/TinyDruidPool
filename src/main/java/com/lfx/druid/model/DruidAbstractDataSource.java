@@ -53,10 +53,10 @@ public class DruidAbstractDataSource {
     protected volatile long timeBetweenEvictionRunsMillis = DEFAULT_TIME_BETWEEN_EVICTION_RUNS_MILLIS;
     protected volatile long timeBetweenConnectErrorMillis = DEFAULT_TIME_BETWEEN_CONNECT_ERROR_MILLIS;
 
-    public final static int DEFAULT_INITIAL_SIZE = 0;
-    public final static int DEFAULT_MAX_ACTIVE_SIZE = 8;
-    public final static int DEFAULT_MIN_IDLE = 0;
-    public final static int DEFAULT_MAX_WAIT = -1;
+    public static final int DEFAULT_INITIAL_SIZE = 0;
+    public static final int DEFAULT_MAX_ACTIVE_SIZE = 8;
+    public static final int DEFAULT_MIN_IDLE = 0;
+    public static final int DEFAULT_MAX_WAIT = -1;
     public static final long DEFAULT_MIN_EVICTABLE_IDLE_TIME_MILLIS = 1000L * 60L * 30L;
     public static final long DEFAULT_MAX_EVICTABLE_IDLE_TIME_MILLIS = 1000L * 60L * 60L * 7;
     public static final long DEFAULT_TIME_BETWEEN_EVICTION_RUNS_MILLIS = 60 * 1000L;

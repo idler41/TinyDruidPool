@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="TinyDruidPool:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="TinyDruidPool.war">
+      <element id="artifact" artifact-name="TinyDruidPool:war exploded" />
+    </root>
+  </artifact>
+</component>

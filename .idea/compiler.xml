@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="MiniDruidPool" />
+        <module name="TinyDruidPool" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="MiniDruidPool" target="1.5" />
+      <module name="TinyDruidPool" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
