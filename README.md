@@ -53,7 +53,7 @@ TinyDruidPool用于学习数据库连接池Druid的项目，所有代码都仿�
         //configFromPropety
     }
 ```
-该类的核心功能就是：connections连接不够时唤醒createConnectionThread运行，当connections满了，则唤醒destroyConnectionThread运行。
+该类的核心功能就是：connections连接不够时唤醒createConnectionThread运行，而destroyConnectionThread则会定时运行。
 
 ## 初始化
 ```java

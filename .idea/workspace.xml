@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b349baa5-8847-408f-960e-752640c20340" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/lfx/druid/model/DruidDataSource.java" afterPath="$PROJECT_DIR$/src/main/java/com/lfx/druid/model/DruidDataSource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TinyDruidPool.iws" />
@@ -30,13 +28,13 @@
       <file leaf-file-name="DruidDataSource.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lfx/druid/model/DruidDataSource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40526316">
-              <caret line="78" column="53" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.18421052">
+              <caret line="331" column="24" selection-start-line="331" selection-start-column="24" selection-end-line="331" selection-end-column="24" />
               <folding>
                 <element signature="method#DruidDataSource#1;class#DruidDataSource#0" expanded="true" />
-                <element signature="method#validateConfig#0;class#DruidDataSource#0" expanded="true" />
-                <element signature="e#5346#5347#0" expanded="true" />
-                <element signature="e#5376#5377#0" expanded="true" />
+                <element signature="method#init#0;class#DruidDataSource#0" expanded="true" />
+                <element signature="e#5344#5345#0" expanded="true" />
+                <element signature="e#5374#5375#0" expanded="true" />
                 <element signature="class#CreateConnectionThread#0;class#DruidDataSource#0" expanded="true" />
                 <element signature="method#CreateConnectionThread#0;class#CreateConnectionThread#0;class#DruidDataSource#0" expanded="true" />
                 <element signature="method#run#0;class#CreateConnectionThread#0;class#DruidDataSource#0" expanded="true" />
@@ -414,12 +412,12 @@
       <option name="number" value="Default" />
       <updated>1473601371077</updated>
       <workItem from="1473601372465" duration="2791000" />
-      <workItem from="1473663465402" duration="6911000" />
+      <workItem from="1473663465402" duration="7087000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9702000" />
+    <option name="totallyTimeSpent" value="9878000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="716" extended-state="6" />
@@ -435,7 +433,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277592" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -513,9 +511,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="method#DruidDataSource#1;class#DruidDataSource#0" expanded="true" />
-            <element signature="method#validateConfig#0;class#DruidDataSource#0" expanded="true" />
-            <element signature="e#5346#5347#0" expanded="true" />
-            <element signature="e#5376#5377#0" expanded="true" />
+            <element signature="method#init#0;class#DruidDataSource#0" expanded="true" />
+            <element signature="e#5344#5345#0" expanded="true" />
+            <element signature="e#5374#5375#0" expanded="true" />
             <element signature="class#CreateConnectionThread#0;class#DruidDataSource#0" expanded="true" />
             <element signature="method#CreateConnectionThread#0;class#CreateConnectionThread#0;class#DruidDataSource#0" expanded="true" />
             <element signature="method#run#0;class#CreateConnectionThread#0;class#DruidDataSource#0" expanded="true" />
@@ -597,13 +595,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lfx/druid/model/DruidDataSource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40526316">
-          <caret line="78" column="53" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.18421052">
+          <caret line="331" column="24" selection-start-line="331" selection-start-column="24" selection-end-line="331" selection-end-column="24" />
           <folding>
             <element signature="method#DruidDataSource#1;class#DruidDataSource#0" expanded="true" />
-            <element signature="method#validateConfig#0;class#DruidDataSource#0" expanded="true" />
-            <element signature="e#5346#5347#0" expanded="true" />
-            <element signature="e#5376#5377#0" expanded="true" />
+            <element signature="method#init#0;class#DruidDataSource#0" expanded="true" />
+            <element signature="e#5344#5345#0" expanded="true" />
+            <element signature="e#5374#5375#0" expanded="true" />
             <element signature="class#CreateConnectionThread#0;class#DruidDataSource#0" expanded="true" />
             <element signature="method#CreateConnectionThread#0;class#CreateConnectionThread#0;class#DruidDataSource#0" expanded="true" />
             <element signature="method#run#0;class#CreateConnectionThread#0;class#DruidDataSource#0" expanded="true" />
