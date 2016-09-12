@@ -76,7 +76,7 @@ public class DruidDataSource extends DruidAbstractDataSource {
         //TODO 为什么要有一个多余的操作，声明一个的局部变量？
         final ReentrantLock lock = this.lock;
 
-        //有其它线程在初始化，则本次操作可中断
+        //TODO 不清楚为什么要设置可中断，什么场景下会调用本线程的interrupt()
         try {
             lock.lockInterruptibly();
         } catch (InterruptedException e) {
@@ -106,7 +106,6 @@ public class DruidDataSource extends DruidAbstractDataSource {
                     DruidConnectionHolder holder = new DruidConnectionHolder(this, pyConnectInfo);
                     connections[poolingCount] = holder;
 
-                    //和直接poolingCount++有区别？
                     incrementPoolingCount();
                 }
 
@@ -165,7 +164,6 @@ public class DruidDataSource extends DruidAbstractDataSource {
             throw new IllegalArgumentException("illegal maxActive " + maxActive);
         }
 
-        //和直接访问相比，有区别？
         if (getInitialSize() > maxActive) {
             throw new IllegalArgumentException("illegal initialSize " + this.initialSize + ", maxActieve " + maxActive);
         }
@@ -212,19 +210,19 @@ public class DruidDataSource extends DruidAbstractDataSource {
                     }
 
                     if (emptyWait) {
-                        //池中还有5个连接而有5个线程在等待连接，这时如果再加一个等待线程则连接不够需要创建连接，
-                        // 否则等待empty信号
+                        //比如：池中还有5个连接而有5个线程在等待锁来获取连接，这时如果再加一个等待线程则连接不够需要创建连接，
+                        // 够用则不需要创建，阻塞创建线程，等待empty信号
                         if (poolingCount >= notEmptyWaitThreadCount) {
-                            System.out.println("createThread wait() notEmptyWaitThreadCount");
+//                            System.out.println("createThread wait() notEmptyWaitThreadCount");
                             empty.await();
-                            BashUtils.executeJstack("dump.out");
+//                            BashUtils.executeJstack("dump.out");
                         }
 
                         // 防止创建超过maxActive数量的连接
                         if (activeCount + poolingCount >= maxActive) {
-                            System.out.println("createThread wait() maxActive");
+//                            System.out.println("createThread wait() maxActive");
                             empty.await();
-                            BashUtils.executeJstack("dump.out");
+//                            BashUtils.executeJstack("dump.out");
                             continue;
                         }
                     }
@@ -388,6 +386,8 @@ public class DruidDataSource extends DruidAbstractDataSource {
         try {
             final int checkCount = poolingCount - minIdle;
             final long currentTimeMillis = System.currentTimeMillis();
+
+            //从头部开始检测，只要发现一个活跃的连接则退出检测功能
             for (int i = 0; i < poolingCount; ++i) {
                 DruidConnectionHolder connection = connections[i];
 
@@ -403,7 +403,6 @@ public class DruidDataSource extends DruidAbstractDataSource {
                     long idleMillis = currentTimeMillis - connection.getLastActiveTimeMillis();
 
                     //空闲时间小于minEvictableIdleTimeMillis的连接就不用删除了
-                    //因为刚空闲不久
                     if (idleMillis < minEvictableIdleTimeMillis) {
                         break;
                     }
@@ -432,6 +431,7 @@ public class DruidDataSource extends DruidAbstractDataSource {
             lock.unlock();
         }
 
+        //关闭连接
         for (DruidConnectionHolder item : evictList) {
             Connection connection = item.getConnection();
             JdbcUtils.close(connection);
