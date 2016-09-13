@@ -1,10 +1,11 @@
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- *
+ * 单服务器竞拍
  * @Author idler [idler41@163.com]
  * @Date 16/8/12 上午4:45.
  */
@@ -25,8 +26,8 @@ public class XxxAuctionService {
         lock = new ReentrantLock(false);
     }
 
+    //TODO 高并发下会出现线程频繁的进行核心态与用户态的切换
     public void bid(int price) {
-
         if (price <= maxPrice) {
             return;
         }

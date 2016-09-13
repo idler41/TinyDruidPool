@@ -617,7 +617,7 @@ public class DruidDataSource extends DruidAbstractDataSource {
                 try {
                     // signal by recycle or creator
                     notEmpty.await();
-                    BashUtils.executeJstack("dump.out");
+//                    BashUtils.executeJstack("dump.out");
                 } finally {
                     notEmptyWaitThreadCount--;
                 }

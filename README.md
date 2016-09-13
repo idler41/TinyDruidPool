@@ -105,11 +105,57 @@ try {
 创建连接在死循环中执行，间隔timeBetweenConnectErrorMillis秒创建一个连接。
 总体包括4大部分：检测(会堵塞：empty.await())、创建、放入connections容器尾端(会发出信号：notEmpty.signal())、异常处理
 ## 销毁连接
-因为关闭连接比较耗时，所以从容器中销毁连接分为2大部分：
+因为关闭连接比较耗时，所以容器中销毁连接分为2大部分：
 
 - 同步块中检测可销毁的连接并存入evictList；
 - 非同步块将evictList中元素都销毁；
 
-备注：检测是从头部开始，发现一个活跃的连接则退出坚持部分，直接进行销毁部分。
+备注：检测是从头部开始，发现一个活跃的连接则退出检测，直接进入销毁部分。
 
 ## 获取连接
+获取连接最终会调用takeLast()或pollLast(long nanos)，这两个方法的区别就是获取连接是否有等待时间。
+
+```java
+    DruidConnectionHolder takeLast() throws InterruptedException, SQLException {
+        try {
+            while (poolingCount == 0) {
+                // send signal to CreateThread create connection
+                System.out.println("发出empty信号");
+                empty.signal();
+
+                if (failFast && failContinuous.get()) {
+                    throw new DataSourceNotAvailableException(createError);
+                }
+
+                notEmptyWaitThreadCount++;
+                if (notEmptyWaitThreadCount > notEmptyWaitThreadPeak) {
+                    notEmptyWaitThreadPeak = notEmptyWaitThreadCount;
+                }
+                try {
+                    // signal by recycle or creator
+                    notEmpty.await();
+//                    BashUtils.executeJstack("dump.out");
+                } finally {
+                    notEmptyWaitThreadCount--;
+                }
+                notEmptyWaitCount++;
+
+                if (!enable) {
+                    connectErrorCount.incrementAndGet();
+                    throw new DataSourceDisableException();
+                }
+            }
+        } catch (InterruptedException ie) {
+            notEmpty.signal(); // propagate to non-interrupted thread
+//            notEmptySignalCount++;
+            throw ie;
+        }
+
+        decrementPoolingCount();
+        DruidConnectionHolder last = connections[poolingCount];
+        connections[poolingCount] = null;
+
+        return last;
+    }
+```
+takeLast()是获得了锁才会调用的。最后几行代码就是从容器中取出连接返回。
